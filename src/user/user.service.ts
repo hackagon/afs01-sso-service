@@ -10,6 +10,10 @@ export class UserService {
     @InjectRepository(UserRepository) private userRepo: UserRepository
   ) { }
 
+  async findUserByEmail(email: string): Promise<UserEntity> {
+    return this.userRepo.findOne({ email })
+  }
+
   async createUser(data: CreateUserDTO): Promise<UserEntity> {
     // hash password ==> typeorm hook (BeforeInsert, BeforeUpdate)
 
