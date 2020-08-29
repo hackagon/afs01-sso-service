@@ -9,6 +9,7 @@ import { JwtStrategy } from './strategies/jwt.strategy';
 import { JwtModule } from "@nestjs/jwt"
 import { FacebookStrategy } from './strategies/facebook.strategy';
 import { UserModule } from '../user/user.module';
+import { OauthClientModule } from '../oauth-client/oauth-client.module';
 
 @Module({
   imports: [
@@ -20,7 +21,8 @@ import { UserModule } from '../user/user.module';
         expiresIn: "1h"
       }
     }),
-    UserModule
+    UserModule,
+    OauthClientModule
   ],
   providers: [AuthService, LocalStrategy, JwtStrategy, FacebookStrategy],
   controllers: [AuthController]

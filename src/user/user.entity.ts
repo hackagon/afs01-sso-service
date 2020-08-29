@@ -5,8 +5,8 @@ import { UserScopeEntity } from '../user-scope/user-scope.entity';
 
 @Entity({ name: "user" })
 export class UserEntity extends BaseEntity {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
   @Column()
   email: string;

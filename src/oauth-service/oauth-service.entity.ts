@@ -1,10 +1,10 @@
 import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from "typeorm";
-import { OauthScopeEntity } from '../oaut-scope/oauth-scope.entity';
+import { OauthScopeEntity } from '../oauth-scope/oauth-scope.entity';
 
 @Entity({ name: "oauth_service" })
 export class OauthServiceEntity extends BaseEntity {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
   @Column()
   name: string;

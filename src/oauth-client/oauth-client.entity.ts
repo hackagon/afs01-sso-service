@@ -1,10 +1,10 @@
-import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany, BaseEntity } from "typeorm";
 import { UserClientEntity } from '../user-client/user-client.entity';
 
 @Entity({ name: "oauth_client" })
 export class OauthClientEntity extends BaseEntity {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
   @Column()
   name: string;
@@ -18,9 +18,7 @@ export class OauthClientEntity extends BaseEntity {
   @UpdateDateColumn({ name: "updated_at" })
   updatedAt: Date;
 
-  // relations
-  @OneToMany(type => UserClientEntity, e => e.oauthClientId, {
-    cascade: true
-  })
+  // relation
+  @OneToMany(type => UserClientEntity, e => e.oauthClientId)
   userClients: UserClientEntity[]
 }

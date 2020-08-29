@@ -4,19 +4,19 @@ import { UserScopeEntity } from '../user-scope/user-scope.entity';
 
 @Entity({ name: "oauth_scope" })
 export class OauthScopeEntity extends BaseEntity {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
   @ManyToOne(type => OauthServiceEntity, e => e.oauthScopes, {
     onDelete: "CASCADE"
   })
   @JoinColumn({ name: "oauth_service_id" })
-  oauthServiceId: number;
+  oauthServiceId: string;
 
   @Column()
   scope: string;
 
-  @Column()
+  @Column({ nullable: true })
   description: string;
 
   @CreateDateColumn({ name: "created_at" })
