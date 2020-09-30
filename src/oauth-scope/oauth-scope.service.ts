@@ -43,4 +43,8 @@ export class OauthScopeService {
       }
     })
   }
+
+  async getScopeByName(name: string) {
+    return await this.oauthScopeRepo.findOne({ where: { scope: name } })
+  }
 }

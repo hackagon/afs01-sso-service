@@ -6,7 +6,7 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   port: 3306,
   username: "root",
   password: "hackagon",
-  database: "afs01_sso",
+  database: "afs02_sso",
   entities: [__dirname + "/../**/*.entity.{js,ts}"],
   synchronize: true
 }
