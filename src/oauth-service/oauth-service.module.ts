@@ -9,6 +9,7 @@ import { ConsoleModule } from 'nestjs-console';
     TypeOrmModule.forFeature([OauthServiceRepository]),
     ConsoleModule
   ],
-  providers: [OauthServiceService]
+  providers: [OauthServiceService],
+  exports: [OauthServiceService]
 })
 export class OauthServiceModule { }

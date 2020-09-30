@@ -10,10 +10,13 @@ import { JwtModule } from "@nestjs/jwt"
 import { FacebookStrategy } from './strategies/facebook.strategy';
 import { UserModule } from '../user/user.module';
 import { OauthClientModule } from '../oauth-client/oauth-client.module';
+import { UserScopeRepository } from '../user-scope/user-scope.repository';
+import { OauthScopeModule } from '../oauth-scope/oauth-scope.module';
+import { OauthServiceModule } from '../oauth-service/oauth-service.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([UserRepository]),
+    TypeOrmModule.forFeature([UserRepository, UserScopeRepository]),
     PassportModule,
     JwtModule.register({
       secret: "afs01",
@@ -22,7 +25,7 @@ import { OauthClientModule } from '../oauth-client/oauth-client.module';
       }
     }),
     UserModule,
-    OauthClientModule
+    OauthClientModule, OauthScopeModule, OauthServiceModule
   ],
   providers: [AuthService, LocalStrategy, JwtStrategy, FacebookStrategy],
   controllers: [AuthController]

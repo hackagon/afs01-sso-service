@@ -33,4 +33,8 @@ export class OauthServiceService {
     console.log(service)
     return service;
   }
+
+  async findServiceByUrl(serviceUrl: string) {
+    return await this.oauthServiceRepo.findOne({ where: { url: serviceUrl } })
+  }
 }

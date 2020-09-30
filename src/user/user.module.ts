@@ -5,10 +5,11 @@ import { UserService } from './user.service';
 import { UserController } from './user.controller';
 import { UserClientRepository } from '../user-client/user-client.repository';
 import { OauthClientModule } from '../oauth-client/oauth-client.module';
+import { UserScopeRepository } from '../user-scope/user-scope.repository';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([UserRepository, UserClientRepository]),
+    TypeOrmModule.forFeature([UserRepository, UserClientRepository, UserScopeRepository]),
     OauthClientModule
   ],
   providers: [UserService],

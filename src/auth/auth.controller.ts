@@ -1,4 +1,4 @@
-import { Controller, Post, UseGuards, Request, Get, Body } from '@nestjs/common';
+import { Controller, Post, UseGuards, Request, Get, Body, Query } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthGuard } from "@nestjs/passport";
 import { LocalAuthGuard } from './guards/local-auth.guard';
@@ -26,5 +26,19 @@ export class AuthController {
   @Get("/facebook")
   async getFacebookToken(@Request() req) {
     return req.user;
+  }
+
+  @Post("/verify")
+  async verifyToken(@Query("token") token: string) {
+    return this.authService.verifyToken(token);
+  }
+
+  @Post("/grant_scopes")
+  async grantScopes(
+    @Query("token") token: string,
+    @Body("scopes") scopes: string[],
+    @Body("serviceUrl") serviceUrl: string
+  ) {
+    return this.authService.grantScopes(token, scopes, serviceUrl)
   }
 }

@@ -34,4 +34,13 @@ export class OauthScopeService {
     console.log(oauthScope)
     return oauthScope;
   }
+
+  async getScope(scope: string, oauthServiceId: string) {
+    return await this.oauthScopeRepo.findOne({
+      where: {
+        scope,
+        oauthServiceId
+      }
+    })
+  }
 }
